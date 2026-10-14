@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ingreso • Mundo Tablas 4° Básico</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Quicksand:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="Sistema/IMAGEN/logo.svg">
+    <style>
+        :root {
+            --primary: #4361EE;
+            --primary-dark: #3A0CA3;
+            --secondary: #FF9F1C;
+            --success: #2EC4B6;
+            --danger: #E71D36;
+            --accent: #F72585;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Quicksand', -apple-system, BlinkMacSystemFont, sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            position: relative;
+            overflow-x: hidden;
+            /* NUEVO FONDO: Espacio Cósmico con Nebulosa Animada */
+            background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 30%, #31104b 60%, #090d16 100%);
+            background-size: 300% 300%;
+            animation: cosmicShift 16s ease infinite;
+        }
+
+        @keyframes cosmicShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Estrellas fugaces en el espacio */
+        .shooting-star {
+            position: absolute;
+            height: 2px;
+            background: linear-gradient(-45deg, #5f93fb, rgba(0, 0, 255, 0));
+            filter: drop-shadow(0 0 6px #699bff);
+            animation: shoot 4s ease-in-out infinite;
+            pointer-events: none;
+            opacity: 0;
+        }
+
+        .shooting-star::before {
+            content: '';
+            position: absolute;
+            top: calc(50% - 1px);
+            right: 0;
+            height: 2px;
+            background: linear-gradient(-45deg, rgba(0, 0, 255, 0), #eaeefb, rgba(0, 0, 255, 0));
+            transform: translateX(50%) rotateZ(45deg);
+            border-radius: 100%;
+            animation: shining 4s ease-in-out infinite;
+        }
+
+        .star-1 { top: 12%; left: 80%; width: 140px; animation-delay: 0s; }
+        .star-2 { top: 35%; left: 90%; width: 100px; animation-delay: 2.5s; }
+        .star-3 { top: 68%; left: 75%; width: 120px; animation-delay: 5s; }
+
+        @keyframes shoot {
+            0% { transform: translateX(0) translateY(0) rotate(-45deg); opacity: 1; }
+            40% { transform: translateX(-350px) translateY(350px) rotate(-45deg); opacity: 0; }
+            100% { opacity: 0; }
+        }
+
+        /* Orbes de nebulosa brillante */
+        .nebula-glow {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            pointer-events: none;
+            opacity: 0.45;
+            animation: pulseNebula 8s ease-in-out infinite alternate;
+        }
+
+        .nebula-1 {
+            width: 450px;
+            height: 450px;
+            background: #7209B7;
+            top: -120px;
+            left: -80px;
+        }
+
+        .nebula-2 {
+            width: 500px;
+            height: 500px;
+            background: #3A86FF;
+            bottom: -150px;
+            right: -100px;
+            animation-duration: 11s;
+        }
+
+        .nebula-3 {
+            width: 320px;
+            height: 320px;
+            background: #F72585;
+            top: 50%;
+            left: 55%;
+            animation-duration: 9s;
+        }
+
+        @keyframes pulseNebula {
+            0% { transform: scale(1) translate(0, 0); opacity: 0.35; }
+            100% { transform: scale(1.25) translate(30px, -20px); opacity: 0.6; }
+        }
+
+        /* Tarjetas de matemáticas flotantes iluminadas en el espacio */
+        .space-math-card {
+            position: absolute;
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(10px);
+            padding: 10px 18px;
+            border-radius: 20px;
+            font-family: 'Fredoka', cursive;
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: #E2E8F0;
+            box-shadow: 0 0 15px rgba(120, 119, 198, 0.4), inset 0 1px 1px rgba(255,255,255,0.2);
+            border: 2px solid rgba(148, 163, 184, 0.3);
+            pointer-events: none;
+            user-select: none;
+            animation: cosmicFloat 14s linear infinite;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        @keyframes cosmicFloat {
+            0% {
+                transform: translateY(115vh) rotate(-8deg) scale(0.85);
+                opacity: 0;
+            }
+            15% { opacity: 0.95; }
+            85% { opacity: 0.95; }
+            100% {
+                transform: translateY(-15vh) rotate(12deg) scale(1.05);
+                opacity: 0;
+            }
+        }
+
+        /* Estrellas estelares titilantes */
+        .stellar-star {
+            position: absolute;
+            color: #FFF;
+            pointer-events: none;
+            animation: starBlink 2.2s infinite ease-in-out;
+        }
+
+        @keyframes starBlink {
+            0%, 100% { opacity: 0.15; transform: scale(0.7); }
+            50% { opacity: 1; transform: scale(1.3) rotate(30deg); filter: drop-shadow(0 0 6px #FFF); }
+        }
+
+        /* Tarjeta Principal de Login */
+        .login-card {
+            background: rgba(255, 255, 255, 0.96);
+            backdrop-filter: blur(20px);
+            border-radius: 34px;
+            padding: 38px 34px;
+            width: 100%;
+            max-width: 550px;
+            box-shadow: 0 25px 70px rgba(0, 0, 0, 0.45), 0 0 35px rgba(67, 97, 238, 0.35);
+            border: 3px solid rgba(255, 255, 255, 0.9);
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            animation: cardEntrance 0.7s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        @keyframes cardEntrance {
+            0% { transform: scale(0.75) translateY(40px); opacity: 0; }
+            100% { transform: scale(1) translateY(0); opacity: 1; }
+        }
+
+        .login-logo {
+            width: 250px;
+            height: auto;
+            margin-bottom: 6px;
+            animation: logoBounce 3.5s ease-in-out infinite;
+            filter: drop-shadow(0 8px 16px rgba(0,0,0,0.12));
+            cursor: pointer;
+        }
+
+        @keyframes logoBounce {
+            0%, 100% { transform: translateY(0) scale(1); }
+            50% { transform: translateY(-7px) scale(1.03) rotate(-1deg); }
+        }
+
+        .login-subtitle {
+            font-size: 1.05rem;
+            color: #64748B;
+            font-weight: 700;
+            margin-bottom: 22px;
+        }
+
+        .login-subtitle span {
+            color: var(--primary);
+            font-weight: 800;
+            background: #EEF2FF;
+            padding: 3px 12px;
+            border-radius: 14px;
+            border: 1px solid #C7D2FE;
+        }
+
+        /* Formulario */
+        .form-group {
+            text-align: left;
+            margin-bottom: 22px;
+        }
+
+        .form-label {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-family: 'Fredoka', cursive;
+            font-size: 1.15rem;
+            color: #1E293B;
+            margin-bottom: 8px;
+        }
+
+        .input-wrapper {
+            position: relative;
+        }
+
+        .input-nombre {
+            width: 100%;
+            padding: 15px 18px 15px 48px;
+            border-radius: 18px;
+            border: 2px solid #CBD5E1;
+            font-size: 1.2rem;
+            font-weight: 800;
+            color: #1E293B;
+            background: #F8FAFC;
+            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+            outline: none;
+        }
+
+        .input-icon {
+            position: absolute;
+            left: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.3rem;
+            pointer-events: none;
+            transition: transform 0.2s;
+        }
+
+        .input-nombre:focus {
+            border-color: var(--primary);
+            background: #FFFFFF;
+            box-shadow: 0 0 0 5px rgba(67, 97, 238, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .input-nombre:focus + .input-icon {
+            transform: translateY(-50%) scale(1.2) rotate(10deg);
+        }
+
+        .input-nombre.error {
+            border-color: var(--danger);
+            background: #FFF1F2;
+            animation: shake 0.4s;
+        }
+
+        .error-mensaje {
+            color: var(--danger);
+            font-size: 0.88rem;
+            font-weight: 700;
+            margin-top: 6px;
+            display: none;
+            animation: fadeIn 0.2s;
+        }
+
+        /* Selector de Avatares Dinámico */
+        .avatares-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+
+        .avatar-card {
+            background: #F8FAFC;
+            border: 3px solid #E2E8F0;
+            border-radius: 22px;
+            padding: 12px 8px;
+            cursor: pointer;
+            transition: all 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            user-select: none;
+        }
+
+        .avatar-card:hover {
+            transform: translateY(-6px) scale(1.06);
+            border-color: var(--primary);
+            background: #EEF2FF;
+            box-shadow: 0 10px 22px rgba(67, 97, 238, 0.2);
+        }
+
+        .avatar-card.seleccionado {
+            border-color: var(--primary);
+            background: linear-gradient(180deg, #EEF2FF 0%, #E0E7FF 100%);
+            box-shadow: 0 12px 26px rgba(67, 97, 238, 0.32);
+            transform: scale(1.08) translateY(-4px);
+        }
+
+        .avatar-card.seleccionado::after {
+            content: "✓";
+            position: absolute;
+            top: -6px;
+            right: -6px;
+            background: #10B981;
+            color: #FFFFFF;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            font-size: 0.85rem;
+            font-weight: 900;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid #FFFFFF;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+            animation: popCheck 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        @keyframes popCheck {
+            0% { transform: scale(0); }
+            100% { transform: scale(1); }
+        }
+
+        .avatar-thumb {
+            width: 66px;
+            height: 66px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 6px;
+            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.12));
+        }
+
+        .avatar-card:hover .avatar-thumb {
+            transform: scale(1.12) rotate(6deg);
+        }
+
+        .avatar-card.seleccionado .avatar-thumb {
+            animation: avatarCheer 0.6s ease;
+        }
+
+        @keyframes avatarCheer {
+            0%, 100% { transform: scale(1); }
+            40% { transform: scale(1.22) translateY(-7px) rotate(-6deg); }
+            70% { transform: scale(1.1) translateY(2px) rotate(4deg); }
+        }
+
+        .avatar-nombre {
+            font-size: 0.82rem;
+            font-weight: 800;
+            color: #334155;
+        }
+
+        /* Bocadillo de diálogo del personaje */
+        .avatar-dialogo-box {
+            background: #FFFBEB;
+            border: 2px solid #FCD34D;
+            border-radius: 16px;
+            padding: 8px 14px;
+            font-size: 0.92rem;
+            font-weight: 800;
+            color: #92400E;
+            margin-bottom: 22px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            box-shadow: 0 4px 12px rgba(245, 158, 11, 0.12);
+            animation: dialogPop 0.3s ease;
+        }
+
+        @keyframes dialogPop {
+            0% { transform: scale(0.9); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        /* Botón de Ingreso con Destello Shimmer */
+        .btn-ingresar {
+            width: 100%;
+            background: linear-gradient(135deg, #4361EE 0%, #3A0CA3 100%);
+            color: #FFFFFF;
+            border: none;
+            padding: 16px;
+            border-radius: 20px;
+            font-family: 'Fredoka', cursive;
+            font-size: 1.35rem;
+            font-weight: 700;
+            cursor: pointer;
+            box-shadow: 0 12px 28px rgba(67, 97, 238, 0.4);
+            transition: all 0.25s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-ingresar::after {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(60deg, transparent, rgba(255,255,255,0.4), transparent);
+            transform: rotate(30deg);
+            animation: shimmerButton 3s infinite;
+        }
+
+        @keyframes shimmerButton {
+            0% { transform: translateX(-100%) rotate(30deg); }
+            100% { transform: translateX(100%) rotate(30deg); }
+        }
+
+        .btn-ingresar:hover {
+            transform: translateY(-4px) scale(1.02);
+            box-shadow: 0 16px 36px rgba(67, 97, 238, 0.55);
+            filter: brightness(1.1);
+        }
+
+        .btn-ingresar:active {
+            transform: translateY(0) scale(0.99);
+        }
+
+        /* Botón de Sonido Flotante */
+        .sound-toggle-btn {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: rgba(30, 41, 59, 0.85);
+            backdrop-filter: blur(8px);
+            border: 2px solid rgba(255,255,255,0.25);
+            padding: 10px 16px;
+            border-radius: 30px;
+            font-weight: 800;
+            font-size: 0.9rem;
+            color: #FFFFFF;
+            cursor: pointer;
+            z-index: 100;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.2s;
+        }
+
+        .sound-toggle-btn:hover {
+            transform: translateY(-2px) scale(1.05);
+            background: rgba(30, 41, 59, 0.95);
+        }
+
+        /* Destellos mágicos del cursor */
+        .cursor-sparkle {
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+            font-size: 1rem;
+            user-select: none;
+            animation: sparkleFly 0.8s ease-out forwards;
+        }
+
+        @keyframes sparkleFly {
+            0% { transform: translate(0, 0) scale(1); opacity: 1; }
+            100% { transform: translate(var(--tx), var(--ty)) scale(0); opacity: 0; }
+        }
+
+        .confeti-particula {
+            position: fixed;
+            width: 12px;
+            height: 12px;
+            pointer-events: none;
+            z-index: 9999;
+            border-radius: 4px;
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            20%, 60% { transform: translateX(-8px); }
+            40%, 80% { transform: translateX(8px); }
+        }
+
+        @media (max-width: 480px) {
+            .login-card {
+                padding: 26px 18px;
+            }
+            .avatar-thumb {
+                width: 52px;
+                height: 52px;
+            }
+            .avatar-nombre {
+                font-size: 0.72rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Nebulosas y estrellas fugaces en el espacio -->
+    <div class="nebula-glow nebula-1"></div>
+    <div class="nebula-glow nebula-2"></div>
+    <div class="nebula-glow nebula-3"></div>
+
+    <div class="shooting-star star-1"></div>
+    <div class="shooting-star star-2"></div>
+    <div class="shooting-star star-3"></div>
+
+    <!-- Botón de sonido flotante -->
+    <button id="btnAudioToggle" class="sound-toggle-btn" onclick="toggleAudio()">
+        🔊 <span>Sonido ON</span>
+    </button>
+
+    <!-- Contenedor de multiplicaciones y estrellas flotantes -->
+    <div id="bubblesContainer"></div>
+
+    <!-- Tarjeta Principal de Ingreso -->
+    <div class="login-card">
+        <img src="Sistema/IMAGEN/logo.svg" alt="Mundo Tablas" class="login-logo" onclick="lanzarConfetiLogin()">
+        <p class="login-subtitle">Aventura Matemática para <span>4° Básico</span></p>
+
+        <!-- Campo de Nombre -->
+        <div class="form-group">
+            <label class="form-label" for="inputNombre">
+                <span>👤</span> Escribe tu nombre o apodo:
+            </label>
+            <div class="input-wrapper">
+                <input type="text" id="inputNombre" class="input-nombre" placeholder="Ej: Sofía, Matías, Lucas..." maxlength="20" autofocus autocomplete="off">
+                <span class="input-icon">✏️</span>
+            </div>
+            <div id="errorMensaje" class="error-mensaje">⚠️ ¡Por favor escribe tu nombre para comenzar la aventura!</div>
+        </div>
+
+        <!-- Selector de los 6 Nuevos Avatares -->
+        <div class="form-group">
+            <label class="form-label">
+                <span>🎭</span> Elige a tu Compañero de Aventura:
+            </label>
+            <div class="avatares-grid" id="avataresGrid">
+                <!-- Avatar 1: Dino-Genio -->
+                <div class="avatar-card seleccionado" data-avatar="avatar1" onclick="seleccionarAvatar('avatar1', this)">
+                    <img src="Sistema/IMAGEN/avatar1.svg" alt="Dino-Genio" class="avatar-thumb">
+                    <span class="avatar-nombre">Dino-Genio</span>
+                </div>
+                <!-- Avatar 2: Panda Maestro -->
+                <div class="avatar-card" data-avatar="avatar2" onclick="seleccionarAvatar('avatar2', this)">
+                    <img src="Sistema/IMAGEN/avatar2.svg" alt="Panda Maestro" class="avatar-thumb">
+                    <span class="avatar-nombre">Panda Maestro</span>
+                </div>
+                <!-- Avatar 3: Tigre Veloz -->
+                <div class="avatar-card" data-avatar="avatar3" onclick="seleccionarAvatar('avatar3', this)">
+                    <img src="Sistema/IMAGEN/avatar3.svg" alt="Tigre Veloz" class="avatar-thumb">
+                    <span class="avatar-nombre">Tigre Veloz</span>
+                </div>
+                <!-- Avatar 4: Búho Mago -->
+                <div class="avatar-card" data-avatar="avatar4" onclick="seleccionarAvatar('avatar4', this)">
+                    <img src="Sistema/IMAGEN/avatar4.svg" alt="Búho Mago" class="avatar-thumb">
+                    <span class="avatar-nombre">Búho Mago</span>
+                </div>
+                <!-- Avatar 5: Koala Aventurero -->
+                <div class="avatar-card" data-avatar="avatar5" onclick="seleccionarAvatar('avatar5', this)">
+                    <img src="Sistema/IMAGEN/avatar5.svg" alt="Koala Aventurero" class="avatar-thumb">
+                    <span class="avatar-nombre">Koala Safari</span>
+                </div>
+                <!-- Avatar 6: Dragón Chispa -->
+                <div class="avatar-card" data-avatar="avatar6" onclick="seleccionarAvatar('avatar6', this)">
+                    <img src="Sistema/IMAGEN/avatar6.svg" alt="Dragón Chispa" class="avatar-thumb">
+                    <span class="avatar-nombre">Dragón Chispa</span>
+                </div>
+            </div>
+
+            <!-- Frase de saludo animada del personaje elegido -->
+            <div id="avatarDialogo" class="avatar-dialogo-box">
+                <span id="avatarDialogoEmoji">🦖</span>
+                <span id="avatarDialogoTexto">¡Raaawr! ¡Los números y las tablas son gigantes como yo!</span>
+            </div>
+        </div>
+
+        <!-- Botón de Ingreso con Animación y Destello -->
+        <button id="btnIngresar" class="btn-ingresar" onclick="ingresarAlSistema()">
+            <span>¡Comenzar la Aventura!</span>
+            <span>🚀</span>
+        </button>
+    </div>
+
+    <!-- Motor de sonido Web Audio API -->
+    <script src="Sistema/JS/audio.js"></script>
+
+    <script>
+        let avatarSeleccionado = 'avatar1';
+
+        const FRASES_AVATAR = {
+            avatar1: { emoji: "🦖", frase: "¡Raaawr! ¡Los números y las tablas son gigantes como yo!" },
+            avatar2: { emoji: "🐼", frase: "¡Paz, concentración y mente brillante para multiplicar!" },
+            avatar3: { emoji: "🐯", frase: "¡A la velocidad del rayo resolveremos cada operación!" },
+            avatar4: { emoji: "🦉", frase: "¡Uhuuu! Conozco los secretos mágicos de cada tabla." },
+            avatar5: { emoji: "🐨", frase: "¡Exploraremos cada rincón de la matemática juntos!" },
+            avatar6: { emoji: "🐲", frase: "¡Lanzaremos chispas de brillantez en cada desafío!" }
+        };
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const guardadoNombre = localStorage.getItem('mundotablas_nombre');
+            const guardadoAvatar = localStorage.getItem('mundotablas_avatar');
+
+            if (guardadoNombre) {
+                document.getElementById('inputNombre').value = guardadoNombre;
+            }
+
+            if (guardadoAvatar && FRASES_AVATAR[guardadoAvatar]) {
+                const targetCard = document.querySelector(`.avatar-card[data-avatar="${guardadoAvatar}"]`);
+                if (targetCard) {
+                    seleccionarAvatar(guardadoAvatar, targetCard, false);
+                }
+            }
+
+            crearElementosFlotantes();
+            crearEstrellasFondo();
+            activarRastroEstrellas();
+
+            document.getElementById('inputNombre').addEventListener('keydown', (e) => {
+                if (e.key === 'Enter') {
+                    ingresarAlSistema();
+                }
+            });
+        });
+
+        function seleccionarAvatar(avatarId, element, conSonido = true) {
+            if (conSonido && window.sound) {
+                window.sound.playSelect();
+            }
+            avatarSeleccionado = avatarId;
+
+            document.querySelectorAll('.avatar-card').forEach(c => c.classList.remove('seleccionado'));
+            element.classList.add('seleccionado');
+
+            // Actualizar diálogo animado del nuevo avatar
+            const info = FRASES_AVATAR[avatarId];
+            if (info) {
+                const box = document.getElementById('avatarDialogo');
+                document.getElementById('avatarDialogoEmoji').textContent = info.emoji;
+                document.getElementById('avatarDialogoTexto').textContent = info.frase;
+                
+                box.style.animation = 'none';
+                void box.offsetWidth;
+                box.style.animation = 'dialogPop 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
+            }
+        }
+
+        function toggleAudio() {
+            if (!window.sound) return;
+            const muted = window.sound.toggleMute();
+            const btn = document.getElementById('btnAudioToggle');
+            btn.innerHTML = muted ? '🔇 <span>Silencio</span>' : '🔊 <span>Sonido ON</span>';
+        }
+
+        function ingresarAlSistema() {
+            const input = document.getElementById('inputNombre');
+            const errorMsg = document.getElementById('errorMensaje');
+            const nuevoNombre = input.value.trim();
+
+            if (nuevoNombre.length < 2) {
+                if (window.sound) window.sound.playError();
+                input.classList.add('error');
+                errorMsg.style.display = 'block';
+                input.focus();
+                setTimeout(() => input.classList.remove('error'), 600);
+                return;
+            }
+
+            errorMsg.style.display = 'none';
+
+            // REINICIO DE PROGRESO SI INICIA CON OTRO NOMBRE
+            const anteriorNombre = localStorage.getItem('mundotablas_nombre');
+            const keyProgresoNuevo = 'mundotablas_progreso_' + nuevoNombre.toLowerCase();
+
+            if (anteriorNombre && anteriorNombre.toLowerCase() !== nuevoNombre.toLowerCase()) {
+                // Al iniciar con otro nombre: si no existe progreso previo para ese nuevo nombre, se inicializa limpio
+                if (!localStorage.getItem(keyProgresoNuevo)) {
+                    localStorage.removeItem('mundotablas_progreso');
+                } else {
+                    localStorage.setItem('mundotablas_progreso', localStorage.getItem(keyProgresoNuevo));
+                }
+            }
+
+            // Guardar sesión actual
+            localStorage.setItem('mundotablas_nombre', nuevoNombre);
+            localStorage.setItem('mundotablas_avatar', avatarSeleccionado);
+
+            if (window.sound) {
+                window.sound.playSuccess();
+                window.sound.playFanfare();
+            }
+
+            lanzarConfetiLogin();
+
+            const btn = document.getElementById('btnIngresar');
+            btn.disabled = true;
+            btn.innerHTML = `<span>¡Despegando al Mundo Tablas!</span> <span>🚀✨</span>`;
+
+            setTimeout(() => {
+                window.location.href = 'Sistema/index.html';
+            }, 850);
+        }
+
+        function crearElementosFlotantes() {
+            const cont = document.getElementById('bubblesContainer');
+            const multiplicaciones = [
+                { op: '2 × 8 = 16', ico: '🦖' },
+                { op: '3 × 7 = 21', ico: '🐼' },
+                { op: '4 × 6 = 24', ico: '🐯' },
+                { op: '5 × 9 = 45', ico: '🦉' },
+                { op: '6 × 7 = 42', ico: '🐨' },
+                { op: '7 × 8 = 56', ico: '🐲' },
+                { op: '8 × 8 = 64', ico: '🪐' },
+                { op: '9 × 9 = 81', ico: '🚀' },
+                { op: '10 × 10 = 100', ico: '⭐' },
+                { op: '6 × 6 = 36', ico: '✨' },
+                { op: '4 × 4 = 16', ico: '💎' }
+            ];
+
+            multiplicaciones.forEach((item, idx) => {
+                const card = document.createElement('div');
+                card.className = 'space-math-card';
+                card.innerHTML = `<span>${item.ico}</span> <span>${item.op}</span>`;
+                card.style.left = `${(idx * 8.8) % 92}%`;
+                card.style.animationDelay = `${(idx * 1.3) % 12}s`;
+                card.style.animationDuration = `${11 + (idx % 6)}s`;
+                cont.appendChild(card);
+            });
+        }
+
+        function crearEstrellasFondo() {
+            const cont = document.getElementById('bubblesContainer');
+            for (let i = 0; i < 28; i++) {
+                const star = document.createElement('div');
+                star.className = 'stellar-star';
+                star.textContent = ['★', '✦', '·', '✨'][i % 4];
+                star.style.fontSize = `${0.8 + Math.random() * 1.2}rem`;
+                star.style.left = `${Math.random() * 98}%`;
+                star.style.top = `${Math.random() * 95}%`;
+                star.style.animationDelay = `${Math.random() * 3}s`;
+                cont.appendChild(star);
+            }
+        }
+
+        function activarRastroEstrellas() {
+            let ultimoTiempo = 0;
+            window.addEventListener('mousemove', (e) => {
+                const ahora = Date.now();
+                if (ahora - ultimoTiempo < 70) return;
+                ultimoTiempo = ahora;
+
+                const sparkle = document.createElement('div');
+                sparkle.className = 'cursor-sparkle';
+                sparkle.textContent = ['✨', '⭐', '💫', '✦'][Math.floor(Math.random() * 4)];
+                sparkle.style.left = `${e.clientX}px`;
+                sparkle.style.top = `${e.clientY}px`;
+
+                const angle = Math.random() * Math.PI * 2;
+                const dist = 25 + Math.random() * 35;
+                sparkle.style.setProperty('--tx', `${Math.cos(angle) * dist}px`);
+                sparkle.style.setProperty('--ty', `${Math.sin(angle) * dist - 20}px`);
+
+                document.body.appendChild(sparkle);
+                setTimeout(() => sparkle.remove(), 800);
+            });
+        }
+
+        function lanzarConfetiLogin() {
+            const colores = ['#FF595E', '#FFCA3A', '#8AC926', '#1982C4', '#6A4C93', '#F72585', '#4CC9F0', '#FFD166'];
+            const rect = document.getElementById('btnIngresar').getBoundingClientRect();
+            const cx = rect.left + rect.width / 2;
+            const cy = rect.top + rect.height / 2;
+
+            for (let i = 0; i < 45; i++) {
+                const p = document.createElement('div');
+                p.className = 'confeti-particula';
+                p.style.backgroundColor = colores[Math.floor(Math.random() * colores.length)];
+                p.style.left = `${cx}px`;
+                p.style.top = `${cy}px`;
+
+                const angle = Math.random() * Math.PI * 2;
+                const dist = 60 + Math.random() * 120;
+                const tx = Math.cos(angle) * dist;
+                const ty = Math.sin(angle) * dist - 30;
+
+                document.body.appendChild(p);
+
+                p.animate([
+                    { transform: 'translate(0, 0) scale(1) rotate(0deg)', opacity: 1 },
+                    { transform: `translate(${tx}px, ${ty}px) scale(0) rotate(${Math.random() * 360}deg)`, opacity: 0 }
+                ], {
+                    duration: 900 + Math.random() * 400,
+                    easing: 'cubic-bezier(0.25, 1, 0.5, 1)'
+                }).onfinish = () => p.remove();
+            }
+        }
+    </script>
+</body>
+</html>

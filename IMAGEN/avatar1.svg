@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" width="100%" height="100%">
+  <defs>
+    <radialGradient id="dinoBg" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#52B788"/>
+      <stop offset="100%" stop-color="#1B4332"/>
+    </radialGradient>
+    <filter id="dinoShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="4" stdDeviation="3" flood-opacity="0.25"/>
+    </filter>
+  </defs>
+  <!-- Background Circle -->
+  <circle cx="80" cy="80" r="75" fill="url(#dinoBg)" stroke="#74C69D" stroke-width="4"/>
+  <!-- Dino Crest / Spikes behind -->
+  <polygon points="50,42 60,24 68,42" fill="#D8F3DC"/>
+  <polygon points="68,36 80,16 88,36" fill="#D8F3DC"/>
+  <polygon points="88,42 98,24 106,42" fill="#D8F3DC"/>
+  <!-- Dino Head -->
+  <ellipse cx="80" cy="86" rx="44" ry="40" fill="#40916C" filter="url(#dinoShadow)"/>
+  <!-- Dino Snout / Cheeks -->
+  <ellipse cx="80" cy="98" rx="36" ry="24" fill="#52B788"/>
+  <!-- Nostrils -->
+  <ellipse cx="72" cy="94" rx="3" ry="2" fill="#1B4332"/>
+  <ellipse cx="88" cy="94" rx="3" ry="2" fill="#1B4332"/>
+  <!-- Cute Teeth -->
+  <polygon points="68,106 72,112 76,106" fill="#FFFFFF"/>
+  <polygon points="84,106 88,112 92,106" fill="#FFFFFF"/>
+  <!-- Glasses Frame -->
+  <circle cx="64" cy="74" r="14" fill="none" stroke="#D90429" stroke-width="3.5"/>
+  <circle cx="96" cy="74" r="14" fill="none" stroke="#D90429" stroke-width="3.5"/>
+  <line x1="78" y1="74" x2="82" y2="74" stroke="#D90429" stroke-width="3.5"/>
+  <!-- Eyes inside glasses -->
+  <ellipse cx="64" cy="74" rx="6" ry="8" fill="#081C15"/>
+  <circle cx="66" cy="71" r="2.5" fill="#FFFFFF"/>
+  <ellipse cx="96" cy="74" rx="6" ry="8" fill="#081C15"/>
+  <circle cx="98" cy="71" r="2.5" fill="#FFFFFF"/>
+  <!-- Blush Cheeks -->
+  <ellipse cx="50" cy="92" rx="6" ry="4" fill="#FF8FA3" opacity="0.7"/>
+  <ellipse cx="110" cy="92" rx="6" ry="4" fill="#FF8FA3" opacity="0.7"/>
+  <!-- Cute Graduation Cap (Birrete Científico) -->
+  <polygon points="80,26 120,38 80,50 40,38" fill="#1D3557"/>
+  <rect x="64" y="44" width="32" height="12" rx="3" fill="#1D3557"/>
+  <circle cx="80" cy="38" r="3" fill="#FFB703"/>
+  <path d="M80,38 Q106,40 114,54" fill="none" stroke="#FFB703" stroke-width="2.5"/>
+  <circle cx="114" cy="56" r="3.5" fill="#FFB703"/>
+  <!-- Small Bowtie -->
+  <polygon points="68,126 92,136 92,126 68,136" fill="#D90429"/>
+  <circle cx="80" cy="131" r="3.5" fill="#9D0208"/>
+</svg>

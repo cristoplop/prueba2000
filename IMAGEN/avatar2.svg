@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" width="100%" height="100%">
+  <defs>
+    <radialGradient id="pandaBg" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#FFE3E0"/>
+      <stop offset="100%" stop-color="#F28482"/>
+    </radialGradient>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="4" stdDeviation="3" flood-opacity="0.25"/>
+    </filter>
+  </defs>
+  <!-- Background Circle -->
+  <circle cx="80" cy="80" r="75" fill="url(#pandaBg)" stroke="#E56B6F" stroke-width="4"/>
+  <!-- Panda Ears -->
+  <circle cx="48" cy="46" r="16" fill="#1D2A44"/>
+  <circle cx="48" cy="46" r="8" fill="#F4A261"/>
+  <circle cx="112" cy="46" r="16" fill="#1D2A44"/>
+  <circle cx="112" cy="46" r="8" fill="#F4A261"/>
+  <!-- Head -->
+  <circle cx="80" cy="86" r="46" fill="#FFFFFF" filter="url(#shadow)"/>
+  <!-- Martial Arts Headband (Cinta Roja Ninja) -->
+  <rect x="36" y="52" width="88" height="14" rx="4" fill="#E63946"/>
+  <!-- Headband Knot / Ribbons -->
+  <polygon points="122,54 138,46 132,64" fill="#E63946"/>
+  <polygon points="122,60 142,66 128,74" fill="#E63946"/>
+  <circle cx="80" cy="59" r="4" fill="#FFD166"/>
+  <!-- Eye Patches (Manchas negras características) -->
+  <ellipse cx="62" cy="84" rx="13" ry="16" fill="#1D2A44" transform="rotate(-15 62 84)"/>
+  <ellipse cx="98" cy="84" rx="13" ry="16" fill="#1D2A44" transform="rotate(15 98 84)"/>
+  <!-- Eyes -->
+  <circle cx="64" cy="83" r="5" fill="#FFFFFF"/>
+  <circle cx="65" cy="83" r="3" fill="#1D2A44"/>
+  <circle cx="66" cy="81" r="1.5" fill="#FFFFFF"/>
+  <circle cx="96" cy="83" r="5" fill="#FFFFFF"/>
+  <circle cx="95" cy="83" r="3" fill="#1D2A44"/>
+  <circle cx="94" cy="81" r="1.5" fill="#FFFFFF"/>
+  <!-- Nose -->
+  <ellipse cx="80" cy="98" rx="8" ry="5.5" fill="#1D2A44"/>
+  <!-- Smile -->
+  <path d="M74,105 Q80,111 86,105" fill="none" stroke="#1D2A44" stroke-width="2.5" stroke-linecap="round"/>
+  <!-- Cheeks Blush -->
+  <circle cx="48" cy="98" r="6" fill="#FF8FA3" opacity="0.65"/>
+  <circle cx="112" cy="98" r="6" fill="#FF8FA3" opacity="0.65"/>
+  <!-- Bamboo Leaf in corner -->
+  <path d="M32,118 Q46,110 44,98 Q36,110 32,118 Z" fill="#2A9D8F"/>
+  <path d="M40,122 Q52,116 50,106 Q42,116 40,122 Z" fill="#52B788"/>
+</svg>
