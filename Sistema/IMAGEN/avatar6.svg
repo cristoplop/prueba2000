@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" width="100%" height="100%">
+  <defs>
+    <radialGradient id="dragonBg" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#E0AAFF"/>
+      <stop offset="100%" stop-color="#5A189A"/>
+    </radialGradient>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="4" stdDeviation="3" flood-opacity="0.25"/>
+    </filter>
+  </defs>
+  <!-- Background Circle -->
+  <circle cx="80" cy="80" r="75" fill="url(#dragonBg)" stroke="#C77DFF" stroke-width="4"/>
+  <!-- Dragon Wings Behind (Alitas mágicas) -->
+  <path d="M40,78 Q20,50 38,36 Q42,54 52,66 Z" fill="#FF9E00"/>
+  <path d="M120,78 Q140,50 122,36 Q118,54 108,66 Z" fill="#FF9E00"/>
+  <!-- Golden Horns (Cuernos dorados) -->
+  <path d="M56,52 Q48,28 36,32 Q46,44 56,52 Z" fill="#FFD166" stroke="#D4A373" stroke-width="1.5"/>
+  <path d="M104,52 Q112,28 124,32 Q114,44 104,52 Z" fill="#FFD166" stroke="#D4A373" stroke-width="1.5"/>
+  <!-- Head -->
+  <ellipse cx="80" cy="86" rx="44" ry="40" fill="#7B2CBF" filter="url(#shadow)"/>
+  <!-- Snout -->
+  <ellipse cx="80" cy="98" rx="32" ry="22" fill="#9D4EDD"/>
+  <!-- Cute Fire Sparks at nose -->
+  <circle cx="72" cy="94" r="3" fill="#3C096C"/>
+  <circle cx="88" cy="94" r="3" fill="#3C096C"/>
+  <!-- Cute Smile -->
+  <path d="M72,106 Q80,113 88,106" fill="none" stroke="#240046" stroke-width="3" stroke-linecap="round"/>
+  <!-- Little Fangs -->
+  <polygon points="70,105 73,110 76,105" fill="#FFFFFF"/>
+  <polygon points="84,105 87,110 90,105" fill="#FFFFFF"/>
+  <!-- Big Shiny Magical Eyes -->
+  <ellipse cx="64" cy="74" rx="10" ry="12" fill="#FFFFFF"/>
+  <circle cx="64" cy="74" r="7" fill="#00B4D8"/>
+  <circle cx="64" cy="74" r="4.5" fill="#03045E"/>
+  <circle cx="66" cy="71" r="2.5" fill="#FFFFFF"/>
+  <ellipse cx="96" cy="74" rx="10" ry="12" fill="#FFFFFF"/>
+  <circle cx="96" cy="74" r="7" fill="#00B4D8"/>
+  <circle cx="96" cy="74" r="4.5" fill="#03045E"/>
+  <circle cx="98" cy="71" r="2.5" fill="#FFFFFF"/>
+  <!-- Cheeks Blush -->
+  <ellipse cx="48" cy="92" rx="6" ry="4" fill="#FF8FA3" opacity="0.75"/>
+  <ellipse cx="112" cy="92" rx="6" ry="4" fill="#FF8FA3" opacity="0.75"/>
+  <!-- Star Sparkle on Forehead -->
+  <polygon points="80,50 82,55 87,55 83,59 85,64 80,61 75,64 77,59 73,55 78,55" fill="#FFD166"/>
+</svg>

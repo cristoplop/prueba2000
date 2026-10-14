@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100%" height="100%">
+  <defs>
+    <linearGradient id="gold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFE066"/>
+      <stop offset="50%" stop-color="#FAB005"/>
+      <stop offset="100%" stop-color="#F08C00"/>
+    </linearGradient>
+  </defs>
+  <!-- Base -->
+  <rect x="32" y="80" width="36" height="12" rx="4" fill="#6C757D"/>
+  <rect x="42" y="70" width="16" height="12" fill="#ADB5BD"/>
+  <!-- Handles -->
+  <path d="M26,30 Q10,32 18,52 Q26,65 35,58" fill="none" stroke="#F59F00" stroke-width="6" stroke-linecap="round"/>
+  <path d="M74,30 Q90,32 82,52 Q74,65 65,58" fill="none" stroke="#F59F00" stroke-width="6" stroke-linecap="round"/>
+  <!-- Cup -->
+  <path d="M28,24 L72,24 Q72,60 50,68 Q28,60 28,24 Z" fill="url(#gold)" stroke="#D9480F" stroke-width="2"/>
+  <!-- Star on Cup -->
+  <polygon points="50,34 53,42 61,43 55,48 57,56 50,52 43,56 45,48 39,43 47,42" fill="#FFFFFF"/>
+</svg>

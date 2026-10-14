@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mundo Tablas: Plataforma Interactiva 4° Básico</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Quicksand:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Estilos de la plataforma -->
+    <link rel="stylesheet" href="CSS/estilos.css">
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="IMAGEN/logo.svg">
+</head>
+<body>
+
+    <!-- Fondo dinámico con partículas matemáticas flotantes -->
+    <div id="sistemaFondoAnimado" class="sistema-fondo-animado"></div>
+
+    <!-- BARRA SUPERIOR DE PERFIL -->
+    <header class="header-principal">
+        <div class="header-contenedor">
+            <div class="brand-box">
+                <img src="IMAGEN/logo.svg" alt="Mundo Tablas" class="brand-logo-img" onclick="irATablas()">
+            </div>
+
+            <!-- Perfil del Estudiante Activo -->
+            <div class="perfil-estudiante-box">
+                <div class="avatar-wrapper">
+                    <img id="userAvatarImg" src="IMAGEN/avatar1.svg" alt="Avatar" class="avatar-img">
+                </div>
+                <div class="perfil-info">
+                    <span id="userName" class="perfil-nombre">Estudiante</span>
+                    <span id="userRango" class="perfil-rango">Explorador Numérico 🌱</span>
+                </div>
+            </div>
+
+            <!-- Estadísticas Rápidas -->
+            <div class="stats-rapidos">
+                <div class="stat-chip xp" title="Puntos de Experiencia">
+                    <span>⚡</span>
+                    <span id="userXP">0 XP</span>
+                </div>
+                <div class="stat-chip stars" title="Estrellas recolectadas">
+                    <span>⭐</span>
+                    <span id="userStars">0 / 27</span>
+                </div>
+            </div>
+
+            <!-- Controles del Sistema -->
+            <div class="header-controles">
+                <button id="btnMuteAudio" class="btn-ctrl" title="Activar / Desactivar Sonido">
+                    🔊 <span>Sonido ON</span>
+                </button>
+                <button id="btnModoProfe" class="btn-ctrl btn-modo-profe" onclick="toggleModoProfe()" title="Activar / Desactivar Modo Profesor para evaluación rápida">
+                    🔓 <span>Modo Profe</span>
+                </button>
+                <button id="btnSalir" class="btn-ctrl" title="Cambiar de estudiante">
+                    🚪 <span>Salir</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- BANNER FLOTANTE MODO PROFESOR ACTIVO -->
+    <div id="bannerModoProfe" class="banner-modo-profe" style="display:none;">
+        <div class="banner-profe-content">
+            <span class="profe-icon">⚡</span>
+            <div>
+                <strong>MODO PROFESOR ACTIVADO:</strong> Todas las tablas del 2 al 10 y el Ensayo SIMCE están desbloqueados para demostración y evaluación docente.
+            </div>
+        </div>
+        <button class="btn-desactivar-profe" onclick="toggleModoProfe()" title="Volver al progreso real del estudiante">
+            Desactivar Modo Profe ✖
+        </button>
+    </div>
+
+    <!-- NAVEGACIÓN PRINCIPAL -->
+    <nav class="nav-principal">
+        <div class="nav-contenedor">
+            <button class="nav-tab-btn activo" data-target="seccion-tablas">
+                <span>🗺️</span> Ruta de Tablas (2 al 10)
+            </button>
+            <button class="nav-tab-btn" data-target="seccion-juegos">
+                <span>🎮</span> Juegos y Desafíos
+            </button>
+            <button class="nav-tab-btn" data-target="seccion-simce">
+                <span>📝</span> Ensayo SIMCE 4° Básico
+                <span id="simceNavBadge" class="nav-badge bloqueado">0/9</span>
+            </button>
+            <button class="nav-tab-btn" data-target="seccion-progreso">
+                <span>🏆</span> Mi Progreso y Trofeos
+            </button>
+        </div>
+    </nav>
+
+    <!-- CONTENIDO PRINCIPAL -->
+    <main class="main-contenido">
+
+        <!-- ========================================== -->
+        <!-- SECCIÓN 1: RUTA DE APRENDIZAJE DE TABLAS   -->
+        <!-- ========================================== -->
+        <section id="seccion-tablas" class="seccion-contenido activa">
+            <div class="banner-aventura">
+                <div class="banner-texto">
+                    <h2>¡Bienvenido a la Aventura de las Tablas! 🚀</h2>
+                    <p>Aprende paso a paso con grupos animados, descubre patrones secretos y gana estrellas de maestría.</p>
+                    <div class="banner-progreso-barra-caja">
+                        <div class="progress-track">
+                            <div id="globalProgressBar" class="progress-fill" style="width: 0%;"></div>
+                        </div>
+                        <span id="globalProgressText" class="progress-label">0% completado (0 de 9 tablas)</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Grid de las 9 tablas (2 al 10) -->
+            <div class="grid-tablas" id="tablasGrid">
+                <!-- Se genera dinámicamente desde JS -->
+            </div>
+        </section>
+
+        <!-- ========================================== -->
+        <!-- SECCIÓN 2: JUEGOS Y DESAFÍOS               -->
+        <!-- ========================================== -->
+        <section id="seccion-juegos" class="seccion-contenido">
+            <!-- Menú de Selección de Juegos -->
+            <div id="juegosMenu" class="juegos-menu-grid">
+                <div class="juego-card">
+                    <div class="juego-icono-big">🃏</div>
+                    <h3>Memoria Matemática</h3>
+                    <p>Encuentra las parejas volteando cartas que relacionen cada multiplicación con su producto correcto.</p>
+                    <button class="btn-primario" onclick="iniciarJuegoMemoria()">Jugar Memoria</button>
+                </div>
+
+                <div class="juego-card">
+                    <div class="juego-icono-big">🎈</div>
+                    <h3>Atrapa el Resultado</h3>
+                    <p>Aparecen burbujas flotantes en movimiento. ¡Toca rápidamente la burbuja con el número correcto!</p>
+                    <button class="btn-primario" onclick="iniciarJuegoAtrapa()">Jugar Atrapa</button>
+                </div>
+
+                <div class="juego-card">
+                    <div class="juego-icono-big">🕵️‍♂️</div>
+                    <h3>Detective Matemático</h3>
+                    <p>Lee 3 pistas lógicas sobre múltiplos y tablas para descubrir cuál es el misterioso número oculto.</p>
+                    <button class="btn-primario" onclick="iniciarJuegoDetective()">Jugar Detective</button>
+                </div>
+            </div>
+
+            <!-- 1. Pantalla Juego Memoria -->
+            <div id="juegoMemoria" style="display:none;">
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:16px;">
+                    <button class="btn-secundario" onclick="volverMenuJuegos()">⬅ Volver a Juegos</button>
+                    <div class="stat-chip stars">Parejas: <span id="memoriaParesContador">0 / 6</span></div>
+                </div>
+                <div class="tablero-memoria" id="tableroMemoria"></div>
+            </div>
+
+            <!-- 2. Pantalla Juego Atrapa -->
+            <div id="juegoAtrapa" style="display:none; text-align:center;">
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:16px;">
+                    <button class="btn-secundario" onclick="volverMenuJuegos()">⬅ Volver a Juegos</button>
+                    <div id="atrapaPuntos" class="stat-chip xp">Aciertos: 0</div>
+                </div>
+                <h2 id="atrapaOperacion" style="font-size:2.8rem; margin:16px 0; color:var(--primary);">6 × 7 = ?</h2>
+                <p style="font-size:1.1rem; color:var(--text-muted); margin-bottom:8px;">
+                    1. Toca la burbuja con tu respuesta ➔ 2. Presiona el botón <strong>Verificar</strong>
+                </p>
+                <div class="atrapa-area" id="atrapaBurbujasArea"></div>
+                <div style="margin-top:20px; display:flex; flex-direction:column; align-items:center; gap:12px;">
+                    <button id="btnVerificarAtrapa" class="btn-primario" onclick="verificarRespuestaAtrapa()" style="font-size:1.25rem; padding:15px 40px; box-shadow:0 8px 24px rgba(67,97,238,0.35);" disabled>
+                        Verificar Respuesta ✅
+                    </button>
+                    <div id="atrapaFeedback" style="min-height:32px; font-weight:800; font-size:1.2rem;"></div>
+                </div>
+            </div>
+
+            <!-- 3. Pantalla Juego Detective -->
+            <div id="juegoDetective" style="display:none;">
+                <div style="margin-bottom:16px;">
+                    <button class="btn-secundario" onclick="volverMenuJuegos()">⬅ Volver a Juegos</button>
+                </div>
+                <div class="detective-box">
+                    <h2 style="margin-bottom:12px; color:var(--primary); text-align:center;">🔍 Caso Detective: ¿Cuál es el número?</h2>
+                    <div id="detectivePistasBox"></div>
+                    <div class="detective-input-caja">
+                        <input type="number" id="detectiveInput" class="detective-input" placeholder="Tu número aquí...">
+                        <button class="btn-primario" onclick="comprobarRespuestaDetective()">Descifrar 🔎</button>
+                    </div>
+                    <div id="detectiveFeedback" style="margin-top:16px;"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================== -->
+        <!-- SECCIÓN 3: ENSAYO MATEMÁTICO TIPO SIMCE    -->
+        <!-- ========================================== -->
+        <section id="seccion-simce" class="seccion-contenido">
+            <!-- Caso A: Bloqueado (aún no domina las 9 tablas) -->
+            <div id="simceBloqueado" class="simce-bloqueado-card">
+                <div class="candado-icono">🔒</div>
+                <h2>Gran Ensayo Matemático tipo SIMCE 4° Básico</h2>
+                <p style="margin: 14px 0 20px 0; font-size:1.1rem; color:var(--text-muted); line-height:1.6;">
+                    Para desbloquear este desafío especial de 10 situaciones matemáticas cotidianas, debes completar las actividades de las tablas del 2 al 10 en la Ruta de Tablas.
+                </p>
+                <div class="progress-track" style="max-width:400px; margin: 0 auto 10px auto; background:#E2E8F0;">
+                    <div id="simceUnlockProgressBar" class="progress-fill" style="width: 0%; background:var(--primary);"></div>
+                </div>
+                <span id="simceUnlockProgressText" style="font-weight:800; color:var(--primary);">0 de 9 tablas completadas (0%)</span>
+                
+                <div style="margin-top:24px; display:flex; justify-content:center; gap:12px;">
+                    <button class="btn-primario" onclick="irATablas()">Ir a Practicar Tablas 🗺️</button>
+                    <button class="btn-secundario" onclick="toggleModoProfe()">🔓 Activar Modo Profe</button>
+                </div>
+            </div>
+
+            <!-- Caso B: Ensayo Activo (10 Preguntas con selector lateral) -->
+            <div id="simceEnsayoActivo" class="simce-layout" style="display:none;">
+                <!-- Navegador lateral numerado del 1 al 10 -->
+                <aside class="simce-sidebar">
+                    <h4>Preguntas del Ensayo</h4>
+                    <div class="simce-nav-grid" id="simceNavPreguntas">
+                        <!-- Botones 1 a 10 generados dinámicamente -->
+                    </div>
+                    <div id="simceContadorRespondidas" style="font-size:0.85rem; font-weight:700; color:var(--text-muted); margin-bottom:14px; text-align:center;">
+                        0 de 10 respondidas
+                    </div>
+                    <button id="btnFinalizarSIMCE" class="btn-finalizar-simce" onclick="finalizarEnsayoSIMCE()" disabled>
+                        Finalizar Ensayo 🏁
+                    </button>
+                </aside>
+
+                <!-- Área Central de Pregunta y Alternativas -->
+                <div class="simce-main-area" id="simceAreaPregunta">
+                    <!-- Contenido dinámico generado por mostrarPreguntaSIMCE() -->
+                </div>
+            </div>
+
+            <!-- Caso C: Resultados y Retroalimentación Pedagógica -->
+            <div id="simceResultados" style="display:none;">
+                <!-- Generado dinámicamente al finalizar ensayo -->
+            </div>
+        </section>
+
+        <!-- ========================================== -->
+        <!-- SECCIÓN 4: PROGRESO Y TROFEOS              -->
+        <!-- ========================================== -->
+        <section id="seccion-progreso" class="seccion-contenido">
+            <h2 style="margin-bottom:20px;">🏆 Tu Hoja de Logros y Dominio de Tablas</h2>
+            <div id="progresoDetalladoGrid"></div>
+
+            <div style="margin-top:40px; text-align:center; padding:20px; border-top:2px dashed #E2E8F0;">
+                <button class="btn-secundario" onclick="reiniciarTodoElProgreso()" style="color:#DC2626; border-color:#FCA5A5;">
+                    ⚠️ Reiniciar todo mi progreso
+                </button>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ======================================================= -->
+    <!-- MODAL DE APRENDIZAJE INTERACTIVO DE UNA TABLA           -->
+    <!-- ======================================================= -->
+    <div id="modalTabla" class="modal-super">
+        <div class="modal-dialog">
+            <div class="modal-header">
+                <h2 id="modalTablaTitulo">Tabla de Multiplicar</h2>
+                <button class="btn-cerrar-modal" onclick="cerrarModalTabla()">✕</button>
+            </div>
+
+            <!-- Subpestañas del módulo -->
+            <div class="modal-subtabs">
+                <button class="subtab-btn activo" data-subtab="visualizador" onclick="cambiarSubTabTabla('visualizador')">
+                    👁️ Ver y Comprender Grupos
+                </button>
+                <button class="subtab-btn" data-subtab="patron" onclick="cambiarSubTabTabla('patron')">
+                    💡 El Truco y Patrón Secreto
+                </button>
+                <button class="subtab-btn" data-subtab="desafio" onclick="cambiarSubTabTabla('desafio')">
+                    🎯 Desafío de Maestría ⭐
+                </button>
+            </div>
+
+            <div class="modal-body">
+                <!-- 1. Visualizador con Grupos y Recta Numérica -->
+                <div id="subtab-visualizador" class="subtab-content activo">
+                    <div class="visualizador-operacion-box">
+                        <span id="visFactorA" class="factor-badge">2</span>
+                        <span class="signo-badge">×</span>
+                        <span id="visFactorB" class="factor-badge">1</span>
+                        <span class="signo-badge">=</span>
+                        <span id="visResultado" class="resultado-badge">2</span>
+                    </div>
+
+                    <div class="controles-stepper">
+                        <button class="btn-step" onclick="cambiarFactorVisualizador(-1)">⬅ Menos ( - 1 )</button>
+                        <span style="font-weight:800; color:var(--text-muted);">Cambiar multiplicación</span>
+                        <button class="btn-step" onclick="cambiarFactorVisualizador(1)">Más ( + 1 ) ➡</button>
+                    </div>
+
+                    <div id="visSumaIterada" class="suma-iterada-box">
+                        <strong>Suma Repetida:</strong> 2 = 2
+                    </div>
+
+                    <!-- Representación Gráfica en Grupos de Objetos -->
+                    <div id="visGruposContenedor" class="grupos-contenedor"></div>
+
+                    <!-- Recta Numérica Interactiva -->
+                    <div class="recta-wrapper">
+                        <div class="recta-titulo">📍 Recta Numérica: Saltos de Multiplicación</div>
+                        <div class="recta-linea" id="rectaNumericaSaltos"></div>
+                    </div>
+                </div>
+
+                <!-- 2. Truco y Patrón Matemático -->
+                <div id="subtab-patron" class="subtab-content">
+                    <div class="truco-card">
+                        <span class="truco-badge">💡 REGLA FÁCIL PARA MEMORIZAR</span>
+                        <h3 id="trucoNombre">El Secreto</h3>
+                        <p id="trucoExplicacion">Explicación</p>
+                        <div class="patron-destacado" id="trucoPatron">Patrón</div>
+                    </div>
+
+                    <div class="curiosidad-card">
+                        <strong>🌟 ¿Sabías que?</strong>
+                        <p id="trucoCuriosidad" style="margin-top:6px;"></p>
+                    </div>
+                </div>
+
+                <!-- 3. Desafío de Maestría -->
+                <div id="subtab-desafio" class="subtab-content">
+                    <div id="desafioContenedor"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ======================================================= -->
+    <!-- MODAL DE DESBLOQUEO ÉPICO DEL SIMCE                     -->
+    <!-- ======================================================= -->
+    <div id="modalDesbloqueoSIMCE" class="modal-super">
+        <div class="modal-dialog" style="max-width:540px; text-align:center;">
+            <div class="modal-body" style="padding:40px 30px;">
+                <div style="font-size:4.5rem; margin-bottom:12px; animation:bounce 1s infinite;">🎉🔓✨</div>
+                <h2 style="font-size:2rem; color:var(--primary); margin-bottom:12px;">¡FELICITACIONES!</h2>
+                <h3 style="font-size:1.3rem; margin-bottom:16px;">Has completado todas las tablas del 2 al 10</h3>
+                <p style="color:var(--text-muted); font-size:1.05rem; line-height:1.5; margin-bottom:28px;">
+                    ¡Has demostrado una gran dedicación! Ahora tienes acceso exclusivo al <strong>Gran Ensayo Matemático tipo SIMCE</strong> para poner a prueba tus habilidades en situaciones de la vida real.
+                </p>
+                <button class="btn-primario" onclick="cerrarModalDesbloqueoSIMCE()" style="font-size:1.1rem; padding:14px 32px;">
+                    ¡Comenzar el Ensayo SIMCE! 🚀
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ======================================================= -->
+    <!-- MODAL DIPLOMA DE HONOR IMPRIMIBLE                       -->
+    <!-- ======================================================= -->
+    <div id="modalDiploma" class="modal-super">
+        <div class="modal-dialog" style="max-width:720px; background:transparent; box-shadow:none;">
+            <div style="text-align:right; margin-bottom:8px;">
+                <button class="btn-secundario" onclick="window.print()" style="background:#FFF;">🖨️ Imprimir / Guardar PDF</button>
+                <button class="btn-secundario" onclick="cerrarModalDiploma()" style="background:#FFF; margin-left:8px;">✕ Cerrar</button>
+            </div>
+            <div class="diploma-box">
+                <div class="diploma-header">
+                    <h2>DIPLOMA DE HONOR</h2>
+                    <div class="diploma-sub">Mundo Tablas • 4° Básico de Educación Primaria</div>
+                </div>
+                <img id="diplomaAvatar" src="IMAGEN/avatar1.svg" class="diploma-avatar-img" alt="Avatar">
+                <div>Se otorga el presente reconocimiento a:</div>
+                <div id="diplomaNombre" class="diploma-estudiante">Estudiante</div>
+                <div class="diploma-texto">
+                    Por haber demostrado excelencia, constancia y dominio en el aprendizaje interactivo de las <strong>Tablas de Multiplicar del 2 al 10</strong> y rendir exitosamente la evaluación matemática tipo SIMCE.
+                </div>
+                <div class="diploma-footer">
+                    <div>Puntaje Obtenido: <strong id="diplomaPuntaje">10 / 10</strong></div>
+                    <div>Fecha: <strong id="diplomaFecha">14 de Octubre</strong></div>
+                    <div>Departamento de Informática Educativa</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SCRIPTS -->
+    <script src="JS/audio.js"></script>
+    <script src="JS/tablas_data.js"></script>
+    <script src="JS/simce_data.js"></script>
+    <script src="JS/app.js"></script>
+
+</body>
+</html>

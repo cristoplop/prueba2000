@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100%" height="100%">
+  <defs>
+    <linearGradient id="ribbon" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#3A86FF"/>
+      <stop offset="50%" stop-color="#FF006E"/>
+      <stop offset="100%" stop-color="#3A86FF"/>
+    </linearGradient>
+    <radialGradient id="medalGold" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#FFF3BF"/>
+      <stop offset="70%" stop-color="#FFD43B"/>
+      <stop offset="100%" stop-color="#F59F00"/>
+    </radialGradient>
+  </defs>
+  <!-- Ribbons -->
+  <polygon points="36,10 46,55 30,55 24,10" fill="url(#ribbon)"/>
+  <polygon points="64,10 76,10 70,55 54,55" fill="url(#ribbon)"/>
+  <!-- Medal Body -->
+  <circle cx="50" cy="62" r="28" fill="url(#medalGold)" stroke="#E85D04" stroke-width="3"/>
+  <circle cx="50" cy="62" r="22" fill="none" stroke="#FFA94D" stroke-width="2" stroke-dasharray="3,3"/>
+  <!-- Number / Star inside -->
+  <polygon points="50,48 53,56 61,57 55,62 57,70 50,66 43,70 45,62 39,57 47,56" fill="#D9480F"/>
+</svg>

@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" width="100%" height="100%">
+  <defs>
+    <radialGradient id="tigerBg" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#FFD166"/>
+      <stop offset="100%" stop-color="#F77F00"/>
+    </radialGradient>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="4" stdDeviation="3" flood-opacity="0.25"/>
+    </filter>
+  </defs>
+  <!-- Background Circle -->
+  <circle cx="80" cy="80" r="75" fill="url(#tigerBg)" stroke="#D62828" stroke-width="4"/>
+  <!-- Tiger Ears -->
+  <circle cx="48" cy="48" r="14" fill="#F77F00"/>
+  <circle cx="48" cy="48" r="8" fill="#FFFFFF"/>
+  <circle cx="112" cy="48" r="14" fill="#F77F00"/>
+  <circle cx="112" cy="48" r="8" fill="#FFFFFF"/>
+  <!-- Head -->
+  <circle cx="80" cy="86" r="46" fill="#F77F00" filter="url(#shadow)"/>
+  <!-- Tiger Stripes (Rayas de Tigre) -->
+  <polygon points="80,44 76,56 84,56" fill="#212529"/>
+  <polygon points="68,48 68,58 72,54" fill="#212529"/>
+  <polygon points="92,48 92,58 88,54" fill="#212529"/>
+  <polygon points="38,82 48,84 38,88" fill="#212529"/>
+  <polygon points="122,82 112,84 122,88" fill="#212529"/>
+  <!-- Superhero Mask (Antifaz Azul Veloz) -->
+  <path d="M42,70 Q60,64 80,72 Q100,64 118,70 Q124,86 108,92 Q80,82 52,92 Q36,86 42,70 Z" fill="#1D3557"/>
+  <!-- Mask Eye Holes -->
+  <ellipse cx="64" cy="78" rx="9" ry="7" fill="#FFFFFF"/>
+  <circle cx="64" cy="78" r="4.5" fill="#1D3557"/>
+  <circle cx="66" cy="76" r="1.5" fill="#FFFFFF"/>
+  <ellipse cx="96" cy="78" rx="9" ry="7" fill="#FFFFFF"/>
+  <circle cx="96" cy="78" r="4.5" fill="#1D3557"/>
+  <circle cx="98" cy="76" r="1.5" fill="#FFFFFF"/>
+  <!-- Lightning Bolt Badge on Mask Center (Rayo de la velocidad) -->
+  <polygon points="82,60 76,70 81,70 77,80 85,68 80,68" fill="#FFD166"/>
+  <!-- Muzzle (Hocico blanco) -->
+  <ellipse cx="80" cy="102" rx="22" ry="16" fill="#FFFFFF"/>
+  <!-- Nose -->
+  <polygon points="80,95 74,90 86,90" fill="#E63946"/>
+  <!-- Mouth -->
+  <path d="M74,103 Q80,108 86,103" fill="none" stroke="#212529" stroke-width="2.5" stroke-linecap="round"/>
+  <!-- Whiskers -->
+  <line x1="62" y1="102" x2="48" y2="100" stroke="#212529" stroke-width="2"/>
+  <line x1="62" y1="106" x2="48" y2="108" stroke="#212529" stroke-width="2"/>
+  <line x1="98" y1="102" x2="112" y2="100" stroke="#212529" stroke-width="2"/>
+  <line x1="98" y1="106" x2="112" y2="108" stroke="#212529" stroke-width="2"/>
+</svg>
